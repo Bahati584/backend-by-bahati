@@ -2,6 +2,8 @@ import express from 'express';
 import { createMultipleUsers } from '../controllers/userController.js';
 
 
+
+
 import {
   createUser,
   getUsers,
@@ -11,6 +13,8 @@ import {
 
 
 } from '../controllers/userController.js';
+
+const router = express.Router();
 
 // PUT /users/:id - Replace full user
 router.put('/:id', async (req, res) => {
@@ -60,7 +64,6 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-const router = express.Router();
 // Define routes for user operations
 router.post('/', createUser); // Create
 router.get('/', getUsers); // Read all

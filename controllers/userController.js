@@ -17,13 +17,16 @@ export const createUser = async (req, res) => {
 
 // GET all users
 export const getUsers = async (req, res) => {
+  console.log("🔥 GET /api/users was called");
   try {
     const users = await User.find();
     res.status(200).json(users);
   } catch (error) {
+    console.error("❌ Error in getUsers:", error.message);
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 // GET one user by ID
 
