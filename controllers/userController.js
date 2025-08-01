@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 
 export const createUser = async (req, res) => {
   try {
-    const { name, phone } = req.body;
+    const { name, email, phone } = req.body;
 
-    const newUser = new User({ name, email: phone });
+    const newUser = new User({ name, email, phone });
     await newUser.save();
 
     res.status(201).json({ message: 'User created successfully', user: newUser });
@@ -56,10 +56,10 @@ export const getUserById = async (req, res) => {
 // UPDATE user
 export const updateUser = async (req, res) => {
   try {
-    const { name, phone } = req.body;
+    const { name, email,phone } = req.body;
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
-      { name, email: phone },
+      { name, email, phone },
       { new: true }
     );
     if (!updatedUser) return res.status(404).json({ message: 'User not found' });
